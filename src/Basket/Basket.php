@@ -12,7 +12,14 @@ class Basket
 
     public function addItem(Product $product): self
     {
+        if (isset($this->items[$product->getId()])) {
+            $this->items[$product->getId()]['count'] += 1;
+
+            return $this;
+        }
+
         $this->items[$product->getId()] = $product;
+        $this->items[$product->getId()]['count'] = 0;
 
         return $this;
     }
@@ -26,7 +33,7 @@ class Basket
         return $this;
     }
 
-    public function totalPrice(): self
+    public function getPrice(): self
     {
         return $this;
     }

@@ -1,8 +1,8 @@
 <?php
 
 use src\Basket\Basket;
-use Src\ProductItem;
 use Src\Bundle;
+use Src\ProductItem;
 
 try {
 
@@ -18,6 +18,6 @@ try {
     $basket = new Basket();
     $basket->addItem($topTenCourses)->addItem($uiCourse);
 
-} catch (\Src\Exceptions\BusinessException $exception) {
+} catch (\src\Exceptions\Contract\BusinessException $exception) {
     echo sprintf("\n --- %s --- \n", $exception->getMessage());
 }

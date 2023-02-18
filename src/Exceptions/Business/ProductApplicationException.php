@@ -2,7 +2,7 @@
 
 namespace Src\Exceptions\Business;
 
-use Src\Exceptions\BusinessException;
+use src\Exceptions\Contract\BusinessException;
 
 class ProductApplicationException extends BusinessException
 {

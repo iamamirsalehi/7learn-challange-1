@@ -45,7 +45,6 @@ class Bundle extends Product
 
     public function getPrice(): int
     {
-
         $totalPrice = 0;
 
         foreach ($this->products as $product) {
