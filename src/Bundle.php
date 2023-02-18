@@ -4,12 +4,18 @@ namespace Src;
 
 use Src\Exceptions\Business\ProductApplicationException;
 
-class Bundle
+class Bundle extends Product
 {
+    private string $id;
     private array $products = [];
     private float $discount = 0;
 
-    public function addProduct(Product $product): self
+    public function __construct()
+    {
+        $this->id = uniqid('bundle');
+    }
+
+    public function addProduct(ProductItem $product): self
     {
         $this->products[] = $product;
 
@@ -27,13 +33,19 @@ class Bundle
         return $this;
     }
 
+    public function getId(): string
+    {
+        return $this->id;
+    }
+
     public function getProducts(): array
     {
         return $this->products;
     }
 
-    public function getTotalPrice(): int
+    public function getPrice(): int
     {
+
         $totalPrice = 0;
 
         foreach ($this->products as $product) {
@@ -42,5 +54,4 @@ class Bundle
 
         return $totalPrice;
     }
-
 }

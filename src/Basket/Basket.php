@@ -2,13 +2,17 @@
 
 namespace src\Basket;
 
+use Src\Bundle;
+use Src\Product;
+use Src\ProductItem;
+
 class Basket
 {
     private array $items;
 
-    public function addItem($item): self
+    public function addItem(Product $product): self
     {
-        $this->items[] = $item;
+        $this->items[$product->getId()] = $product;
 
         return $this;
     }

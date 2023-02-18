@@ -2,13 +2,13 @@
 
 namespace src\Basket;
 
-use Src\Product;
+use Src\ProductItem;
 
 class BasketPriceDecorator implements BasketPrice
 {
-    protected Product $product;
+    protected ProductItem $product;
 
-    public function __construct(Product $product)
+    public function __construct(ProductItem $product)
     {
         $this->product = $product;
     }

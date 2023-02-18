@@ -8,7 +8,7 @@ class ProductApplicationException extends BusinessException
 {
     public static function canNotHaveNegativePrice(): self
     {
-        return new self('Product can not have negetive price');
+        return new self('ProductItem can not have negetive price');
     }
 
     public static function discountMustBeBetweenZeroAndHundred(): self
