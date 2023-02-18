@@ -1,9 +1,10 @@
 <?php
 
-use src\Basket\Basket;
+use Src\Basket\Basket;
 use Src\Bundle;
 use Src\ProductItem;
 use Src\Basket\BasketPriceDecorator;
+use Src\Basket\ProductDiscountPrice;
 
 try {
 
@@ -18,7 +19,8 @@ try {
     $basket = new Basket();
     $basket->addItem($topTenCourses)->addItem($uiCourse);
 
-    $basketDiscount = new BasketPriceDecorator($basket);
+    $basketDiscount = new ProductDiscountPrice($basket);
+    echo $basketDiscount->getPrice();
 
 } catch (\src\Exceptions\Contract\BusinessException $exception) {
     echo sprintf("\n --- %s --- \n", $exception->getMessage());
