@@ -1,26 +1,27 @@
 <?php
 
-
 namespace Src;
+
+use Src\Exceptions\Business\ProductApplicationException;
+
 class Product
 {
-    private int $id;
     private string $title;
     private int $price;
     private float $discount = 0;
 
+    /**
+     * @throws ProductApplicationException
+     */
     public static function new(string $title, int $price, float $discount = 0): self
     {
         $product = new self();
         $product->setTitle($title);
         $product->setPrice($price);
         $product->setDiscount($discount);
-        $product->id = rand(1, 99999999999999);
-        //Dispatch an event
 
         return $product;
     }
-
 
     public function setTitle(string $title): self
     {
@@ -32,7 +33,7 @@ class Product
     public function setPrice(int $price): self
     {
         if ($price < 0) {
-            throw new \InvalidArgumentException('Price can not be negative');
+            throw ProductApplicationException::canNotHaveNegativePrice();
         }
 
         $this->price = $price;
@@ -43,17 +44,12 @@ class Product
     public function setDiscount(float $discount = 0): self
     {
         if ($discount < 0 or $discount > 100) {
-            throw new \InvalidArgumentException('Discount must be between 0 and 100 (percent)');
+            throw ProductApplicationException::discountMustBeBetweenZeroAndHundred();
         }
 
         $this->discount = $discount;
 
         return $this;
-    }
-
-    public function getId(): int
-    {
-        return $this->id;
     }
 
     public function getTitle(): string

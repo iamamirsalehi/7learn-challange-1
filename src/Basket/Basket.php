@@ -1,6 +1,7 @@
 <?php
 
-namespace Src;
+namespace src\Basket;
+
 class Basket
 {
     private array $items;
