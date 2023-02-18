@@ -3,9 +3,9 @@
 use src\Basket\Basket;
 use Src\Bundle;
 use Src\ProductItem;
+use Src\Basket\BasketPriceDecorator;
 
 try {
-
 
     $phpCourse = ProductItem::new('PHP Course', 3000000, 5);
     $jsCourse = ProductItem::new('Js Course', 2000000, 2);
@@ -17,6 +17,8 @@ try {
 
     $basket = new Basket();
     $basket->addItem($topTenCourses)->addItem($uiCourse);
+
+    $basketDiscount = new BasketPriceDecorator($basket);
 
 } catch (\src\Exceptions\Contract\BusinessException $exception) {
     echo sprintf("\n --- %s --- \n", $exception->getMessage());

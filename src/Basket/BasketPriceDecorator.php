@@ -1,21 +1,21 @@
 <?php
 
-namespace src\Basket;
+namespace Src\Basket;
 
 use Src\ProductItem;
 
 class BasketPriceDecorator implements BasketPrice
 {
-    protected ProductItem $product;
+    protected Basket $basket;
 
-    public function __construct(ProductItem $product)
+    public function __construct(Basket $basket)
     {
-        $this->product = $product;
+        $this->basket = $basket;
     }
 
 
     public function getPrice(): int
     {
-        return $this->product->getPrice();
+        return $this->basket->getPrice();
     }
 }

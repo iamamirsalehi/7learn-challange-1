@@ -1,6 +1,6 @@
 <?php
 
-namespace src\Basket;
+namespace Src\Basket;
 
 interface BasketPrice
 {
