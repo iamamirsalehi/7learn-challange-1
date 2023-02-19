@@ -3,7 +3,6 @@
 use Src\Basket\Basket;
 use Src\Bundle;
 use Src\ProductItem;
-use Src\Basket\BasketPriceDecorator;
 use Src\Basket\ProductDiscountPrice;
 
 try {

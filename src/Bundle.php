@@ -53,4 +53,9 @@ class Bundle extends Product
 
         return $totalPrice;
     }
+
+    public function getDiscount(): float
+    {
+        return $this->discount;
+    }
 }
