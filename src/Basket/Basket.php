@@ -19,12 +19,12 @@ class Basket
         }
 
         $this->items[$product->getId()]['product'] = $product;
-        $this->items[$product->getId()]['count'] = 0;
+        $this->items[$product->getId()]['count'] = 1;
 
         return $this;
     }
 
-    public function removeItem(int $id): self
+    public function removeItem(string $id): self
     {
         if (isset($this->items[$id])) {
             unset($this->items[$id]);
@@ -37,7 +37,9 @@ class Basket
     {
         $price = 0;
         foreach ($this->items as $productId => $product) {
-            $price += $product['product']->getPrice();
+            foreach (range(1, $product['count']) as $count) {
+                $price += $product['product']->getPrice();
+            }
         }
         return $price;
     }

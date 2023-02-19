@@ -23,7 +23,7 @@ try {
         ->setDiscount(10);
 
     $basket = new Basket();
-    $basket->addItem($topThreeCourses)->addItem($uiCourse);
+    $basket->addItem($topThreeCourses)->addItem($uiCourse)->addItem($uiCourse);
 
     $basketDiscount = new ProductDiscountPrice($basket);
     echo sprintf("\n --- %s --- \n", $basketDiscount->getPrice());

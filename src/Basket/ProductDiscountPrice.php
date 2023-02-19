@@ -13,11 +13,15 @@ class ProductDiscountPrice extends BasketPriceDecorator
         $totalPriceThatMustBeDiscount = 0;
         foreach ($this->basket->getItems() as $item) {
             if ($item['product'] instanceof Bundle) {
-                $totalPriceThatMustBeDiscount += $this->calculateBundlePriceWithDiscount($item['product']);
+                foreach (range(1, $item['count']) as $productCount) {
+                    $totalPriceThatMustBeDiscount += $this->calculateBundlePriceWithDiscount($item['product']);
+                }
             }
 
             if ($item['product'] instanceof ProductItem) {
-                $totalPriceThatMustBeDiscount += $this->calculateProductItemPriceWithDiscount($item['product']);
+                foreach (range(1, $item['count']) as $productCount) {
+                    $totalPriceThatMustBeDiscount += $this->calculateProductItemPriceWithDiscount($item['product']);
+                }
             }
         }
 
