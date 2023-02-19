@@ -8,4 +8,9 @@ class PricePercentageCalculator
     {
         return $price - (($price / 100) * $discount);
     }
+
+    public static function getThePercentageAmountOfPrice(int $price, float $discount): int
+    {
+        return ($price / 100) * $discount;
+    }
 }
