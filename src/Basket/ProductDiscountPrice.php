@@ -3,7 +3,7 @@
 namespace Src\Basket;
 
 use Src\Bundle;
-use Src\ProductItem;
+use Src\SingleProduct;
 
 class ProductDiscountPrice extends BasketPriceDecorator
 {
@@ -17,7 +17,7 @@ class ProductDiscountPrice extends BasketPriceDecorator
                 }
             }
 
-            if ($item['product'] instanceof ProductItem) {
+            if ($item['product'] instanceof SingleProduct) {
                 foreach (range(1, $item['count']) as $productCount) {
                     $totalDiscount += $this->calculateProductItemPriceWithDiscount($item['product']);
                 }
@@ -42,7 +42,7 @@ class ProductDiscountPrice extends BasketPriceDecorator
         return $totalDiscount;
     }
 
-    private function calculateProductItemPriceWithDiscount(ProductItem $productItem): int
+    private function calculateProductItemPriceWithDiscount(SingleProduct $productItem): int
     {
         if ($productItem->getDiscount() != 0) {
             return PricePercentageCalculator::getThePercentageAmountOfPrice($productItem->getPrice(), $productItem->getDiscount());

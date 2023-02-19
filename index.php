@@ -4,15 +4,15 @@ require_once "vendor/autoload.php";
 
 use Src\Basket\Basket;
 use Src\Bundle;
-use Src\ProductItem;
+use Src\SingleProduct;
 use Src\Basket\ProductDiscountPrice;
 
 try {
 
-    $phpCourse = ProductItem::new('PHP Course', 3000000, 5);
-    $jsCourse = ProductItem::new('Js Course', 2000000, 2);
-    $wordpressCourse = ProductItem::new('Wordpress Course', 1000000, 3);
-    $uiCourse = ProductItem::new('UI Course', 1200000, 8);
+    $phpCourse = SingleProduct::new('PHP Course', 3000000, 5);
+    $jsCourse = SingleProduct::new('Js Course', 2000000, 2);
+    $wordpressCourse = SingleProduct::new('Wordpress Course', 1000000, 3);
+    $uiCourse = SingleProduct::new('UI Course', 1200000, 8);
 
     $topThreeCourses = new Bundle();
     $topThreeCourses

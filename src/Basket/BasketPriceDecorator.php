@@ -2,7 +2,7 @@
 
 namespace Src\Basket;
 
-use Src\ProductItem;
+use Src\SingleProduct;
 
 class BasketPriceDecorator implements BasketPrice
 {

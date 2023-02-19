@@ -8,7 +8,7 @@ class Bundle extends Product
 {
     private array $products = [];
 
-    public function addProduct(ProductItem $product): self
+    public function addProduct(SingleProduct $product): self
     {
         $this->products[] = $product;
 

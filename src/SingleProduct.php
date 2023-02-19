@@ -4,7 +4,7 @@ namespace Src;
 
 use Src\Exceptions\Business\ProductApplicationException;
 
-class ProductItem extends Product
+class SingleProduct extends Product
 {
     private int $price;
 
