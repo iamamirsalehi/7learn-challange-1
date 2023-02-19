@@ -8,7 +8,6 @@ class Bundle extends Product
 {
     private string $id;
     private array $products = [];
-    private float $discount = 0;
 
     public function __construct()
     {
@@ -18,17 +17,6 @@ class Bundle extends Product
     public function addProduct(ProductItem $product): self
     {
         $this->products[] = $product;
-
-        return $this;
-    }
-
-    public function setDiscount(float $discount = 0): self
-    {
-        if ($discount < 0 or $discount > 100) {
-            throw ProductApplicationException::discountMustBeBetweenZeroAndHundred();
-        }
-
-        $this->discount = $discount;
 
         return $this;
     }
@@ -52,10 +40,5 @@ class Bundle extends Product
         }
 
         return $totalPrice;
-    }
-
-    public function getDiscount(): float
-    {
-        return $this->discount;
     }
 }

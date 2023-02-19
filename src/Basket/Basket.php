@@ -8,7 +8,7 @@ use Src\ProductItem;
 
 class Basket
 {
-    private array $items;
+    private array $items = [];
 
     public function addItem(Product $product): self
     {
@@ -18,7 +18,7 @@ class Basket
             return $this;
         }
 
-        $this->items[$product->getId()] = $product;
+        $this->items[$product->getId()]['product'] = $product;
         $this->items[$product->getId()]['count'] = 0;
 
         return $this;
@@ -33,13 +33,17 @@ class Basket
         return $this;
     }
 
-    public function getPrice(): self
+    public function getPrice(): int
     {
-        return $this;
+        $price = 0;
+        foreach ($this->items as $productId => $product) {
+            $price += $product['product']->getPrice();
+        }
+        return $price;
     }
 
-    public function getItems(): self
+    public function getItems(): array
     {
-        return $this;
+        return $this->items;
     }
 }

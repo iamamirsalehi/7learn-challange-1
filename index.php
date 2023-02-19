@@ -1,5 +1,7 @@
 <?php
 
+require_once "vendor/autoload.php";
+
 use Src\Basket\Basket;
 use Src\Bundle;
 use Src\ProductItem;
@@ -12,14 +14,19 @@ try {
     $wordpressCourse = ProductItem::new('Wordpress Course', 1000000, 3);
     $uiCourse = ProductItem::new('UI Course', 1200000, 8);
 
-    $topTenCourses = new Bundle();
-    $topTenCourses->addProduct($phpCourse)->addProduct($jsCourse)->addProduct($wordpressCourse)->setDiscount(10);
+    $topThreeCourses = new Bundle();
+    $topThreeCourses
+        ->setTitle('سه تار از بهترین دوره ها')
+        ->addProduct($phpCourse)
+        ->addProduct($jsCourse)
+        ->addProduct($wordpressCourse)
+        ->setDiscount(10);
 
     $basket = new Basket();
-    $basket->addItem($topTenCourses)->addItem($uiCourse);
+    $basket->addItem($topThreeCourses)->addItem($uiCourse);
 
     $basketDiscount = new ProductDiscountPrice($basket);
-    echo $basketDiscount->getPrice();
+    echo sprintf("\n --- %s --- \n", $basketDiscount->getPrice());
 
 } catch (\src\Exceptions\Contract\BusinessException $exception) {
     echo sprintf("\n --- %s --- \n", $exception->getMessage());
