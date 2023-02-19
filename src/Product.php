@@ -6,12 +6,21 @@ use Src\Exceptions\Business\ProductApplicationException;
 
 abstract class Product
 {
+    protected string $id;
     protected string $title;
     protected float $discount = 0;
 
+    public function __construct()
+    {
+        $this->id = uniqid('product');
+    }
+
     abstract public function getPrice(): int;
 
-    abstract public function getId(): string;
+    public function getId(): string
+    {
+        return $this->id;
+    }
 
     public function setTitle(string $title): self
     {

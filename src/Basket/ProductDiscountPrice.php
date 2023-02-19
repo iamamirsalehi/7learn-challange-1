@@ -9,22 +9,22 @@ class ProductDiscountPrice extends BasketPriceDecorator
 {
     public function getPrice(): int
     {
-        $totalPriceThatMustBeDiscount = 0;
+        $totalDiscount = 0;
         foreach ($this->basket->getItems() as $item) {
             if ($item['product'] instanceof Bundle) {
                 foreach (range(1, $item['count']) as $productCount) {
-                    $totalPriceThatMustBeDiscount += $this->calculateBundlePriceWithDiscount($item['product']);
+                    $totalDiscount += $this->calculateBundlePriceWithDiscount($item['product']);
                 }
             }
 
             if ($item['product'] instanceof ProductItem) {
                 foreach (range(1, $item['count']) as $productCount) {
-                    $totalPriceThatMustBeDiscount += $this->calculateProductItemPriceWithDiscount($item['product']);
+                    $totalDiscount += $this->calculateProductItemPriceWithDiscount($item['product']);
                 }
             }
         }
 
-        return parent::getPrice() - $totalPriceThatMustBeDiscount;
+        return parent::getPrice() - $totalDiscount;
     }
 
     private function calculateBundlePriceWithDiscount(Bundle $bundle): int
@@ -33,13 +33,13 @@ class ProductDiscountPrice extends BasketPriceDecorator
             return PricePercentageCalculator::getThePercentageAmountOfPrice($bundle->getPrice(), $bundle->getDiscount());
         }
 
-        $totalPrice = 0;
+        $totalDiscount = 0;
 
         foreach ($bundle->getProducts() as $product) {
-            $totalPrice += $this->calculateProductItemPriceWithDiscount($product);
+            $totalDiscount += $this->calculateProductItemPriceWithDiscount($product);
         }
 
-        return $totalPrice;
+        return $totalDiscount;
     }
 
     private function calculateProductItemPriceWithDiscount(ProductItem $productItem): int

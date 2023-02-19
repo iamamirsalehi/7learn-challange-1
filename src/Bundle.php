@@ -6,13 +6,7 @@ use Src\Exceptions\Business\ProductApplicationException;
 
 class Bundle extends Product
 {
-    private string $id;
     private array $products = [];
-
-    public function __construct()
-    {
-        $this->id = uniqid('bundle');
-    }
 
     public function addProduct(ProductItem $product): self
     {

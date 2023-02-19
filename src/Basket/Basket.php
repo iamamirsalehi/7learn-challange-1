@@ -2,9 +2,7 @@
 
 namespace Src\Basket;
 
-use Src\Bundle;
 use Src\Product;
-use Src\ProductItem;
 
 class Basket
 {
