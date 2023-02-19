@@ -1,6 +1,6 @@
 <?php
 
-namespace src\Exceptions\Contract;
+namespace Src\Exceptions\Contract;
 
 class BusinessException extends \Exception
 {

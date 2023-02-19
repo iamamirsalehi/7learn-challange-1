@@ -16,7 +16,7 @@ try {
 
     $topThreeCourses = new Bundle();
     $topThreeCourses
-        ->setTitle('سه تار از بهترین دوره ها')
+        ->setTitle('سه تا از بهترین دوره ها')
         ->addProduct($phpCourse)
         ->addProduct($jsCourse)
         ->addProduct($wordpressCourse)
