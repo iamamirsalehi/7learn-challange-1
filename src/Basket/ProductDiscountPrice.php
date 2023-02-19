@@ -9,7 +9,6 @@ class ProductDiscountPrice extends BasketPriceDecorator
 {
     public function getPrice(): int
     {
-        //TODO: calculate count
         $totalPriceThatMustBeDiscount = 0;
         foreach ($this->basket->getItems() as $item) {
             if ($item['product'] instanceof Bundle) {
